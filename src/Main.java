@@ -14,37 +14,61 @@ public class Main {
         employees[8] = new Employee("Воронин", "Илья", "Дмитриевич", 3, 99000);
         employees[9] = new Employee("Сафин", "Евгений", "Русланович", 1, 112100);
 
-
         for (Employee employee : employees) {
             System.out.println(employee);
         }
+            double totalSalary = calculateTotalSalary(employees);
+            System.out.println("Общая сумма затрат: " + totalSalary + " руб.");
 
-        double totalSalary = 0;
-        for (Employee emp : employees) {
-            totalSalary += emp.getSalary();
+            Employee minSalaryEmployee = calculateMinSalary(employees);
+            System.out.println("Минимальная зарплата = " + minSalaryEmployee);
+
+            Employee maxSalaryEmployee = calculateMaxSalary(employees);
+            System.out.println("Максимальная зарплата = " + maxSalaryEmployee);
+
+            double averageSalary = getAverageSalary(employees);
+            System.out.println("Средняя зарплата равна " + averageSalary + " руб.");
+
+            System.out.println("Список сотрудников:");
+            for (Employee emp : employees) {
+                System.out.println(emp.getLastName() + " " + emp.getFirstName() + " " + emp.getMiddleName());
+            }
         }
-        System.out.println("Общая сумма затрат: " + totalSalary + " руб.");
 
+    public static double calculateTotalSalary(Employee[] employees) {
+        double total = 0;
+        for (Employee emp : employees) {
+            total += emp.getSalary();
+        } return total;
+        }
+
+    public static Employee calculateMinSalary(Employee[] employees) {
         Employee minSalaryEmployee = employees[0];
-        Employee maxSalaryEmployee = employees[0];
-
         for (Employee emp : employees) {
             if (emp.getSalary() < minSalaryEmployee.getSalary()) {
                 minSalaryEmployee = emp;
             }
+        }
+        return minSalaryEmployee;
+    }
+
+    public static Employee calculateMaxSalary(Employee[] employees) {
+        Employee maxSalaryEmployee = employees[0];
+        for (Employee emp : employees) {
             if (emp.getSalary() > maxSalaryEmployee.getSalary()) {
                 maxSalaryEmployee = emp;
             }
         }
-        System.out.println("Минимальная зарплата = " + minSalaryEmployee);
-        System.out.println("Максимальная зарплата = " + maxSalaryEmployee);
+        return maxSalaryEmployee;
+    }
 
-        double averageSalary = totalSalary / employees.length;
-        System.out.println("Средняя зарплата равна " + averageSalary + " руб.");
+        public static double getAverageSalary(Employee[] employees) {
 
-        System.out.println("Список сотрудников:");
-        for (Employee emp : employees) {
-            System.out.println(emp.getLastName() + " " + emp.getFirstName() + " " + emp.getMiddleName());
+            return (calculateTotalSalary(employees)) / employees.length;
         }
     }
-}
+
+
+
+
+
