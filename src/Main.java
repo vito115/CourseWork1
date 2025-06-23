@@ -14,9 +14,8 @@ public class Main {
         employees[8] = new Employee("Воронин", "Илья", "Дмитриевич", 3, 99000);
         employees[9] = new Employee("Сафин", "Евгений", "Русланович", 1, 112100);
 
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+            callingEmployees(employees);
+
             double totalSalary = calculateTotalSalary(employees);
             System.out.println("Общая сумма затрат: " + totalSalary + " руб.");
 
@@ -30,8 +29,12 @@ public class Main {
             System.out.println("Средняя зарплата равна " + averageSalary + " руб.");
 
             System.out.println("Список сотрудников:");
-            for (Employee emp : employees) {
-                System.out.println(emp.getLastName() + " " + emp.getFirstName() + " " + emp.getMiddleName());
+            callNameEmployees(employees);
+        }
+
+        public static void callingEmployees(Employee[] employees) {
+            for (Employee employee : employees) {
+                System.out.println(employee);
             }
         }
 
@@ -62,11 +65,16 @@ public class Main {
         return maxSalaryEmployee;
     }
 
-        public static double getAverageSalary(Employee[] employees) {
-
+    public static double getAverageSalary(Employee[] employees) {
             return (calculateTotalSalary(employees)) / employees.length;
+    }
+
+        public static void callNameEmployees(Employee[] employees) {
+        for (Employee emp : employees) {
+            System.out.println(emp.getLastName() + " " + emp.getFirstName() + " " + emp.getMiddleName());
         }
     }
+}
 
 
 
